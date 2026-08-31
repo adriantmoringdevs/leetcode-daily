@@ -1,14 +1,15 @@
-from leetcode import todays_submissions
+import sys 
 
+from PySide6.QtWidgets import QApplication
 
-username = input("Enter your LeetCode username: ")
+from widget import LeetCodeWidget
 
-submissions = todays_submissions(username)
+username = input("Enter your Leetcode username:")
 
-print("\nToday's submissions:")
+app = QApplication(sys.argv)
 
-for submission in submissions:
-    print(
-        submission["title"],
-        submission["timestamp"]
-    )
+widget = LeetCodeWidget(username)
+
+widget.show()
+
+sys.exit(app.exec())

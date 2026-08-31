@@ -40,7 +40,7 @@ def todays_submissions(username):
 
     today = datetime.now().date()
 
-    todays_submissions = []
+    results = []
 
     for submission in submissions:
         submission_date = datetime.fromtimestamp(
@@ -48,8 +48,9 @@ def todays_submissions(username):
         ).date()
 
         if submission_date == today:
-            todays_submissions.append(submission)
+            results.append(submission)
 
+    return results
 
-
-    return todays_submissions
+def solved_today(username):
+    return len(todays_submissions(username)) > 0
