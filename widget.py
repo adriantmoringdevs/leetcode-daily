@@ -1,8 +1,10 @@
 from datetime import datetime
 
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QUrl
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import (
     QLabel,
+    QPushButton,
     QVBoxLayout,
     QWidget,
 )
@@ -18,6 +20,7 @@ class LeetCodeWidget(QWidget):
         self.username = username
 
         self.setWindowTitle("Leetcode Daily")
+        self.setFixedSize(300, 180)
 
         self.setup_ui()
 
@@ -31,16 +34,34 @@ class LeetCodeWidget(QWidget):
         self.title = QLabel("LEETCODE DAILY")
         self.status = QLabel()
         self.problem = QLabel()
-        self.time = QLabel()
+        self.time = QLabel() 
+
+        self.open_button = QPushButton("Open LeetCode")
+        self.open_button.clicked.connect(self.open_leetcode)
 
         layout.addWidget(self.title)
         layout.addWidget(self.status)
         layout.addWidget(self.problem)
         layout.addWidget(self.time)
+        layout.addWidget(self.open_button)
 
         self.setLayout(layout)
 
         self.refresh_status()
+
+        self.setStyleSheet("""
+                QWidget {
+                    font-family: Arial;
+                }
+
+                QLabel {
+                    padding: 4px;
+                }
+
+                QPushButton {
+                    padding: 8px;
+                }
+            """)
 
     def refresh_status(self):
         print("Checking LeetCode...")
@@ -65,3 +86,8 @@ class LeetCodeWidget(QWidget):
                 "You haven't solved a problem today."
             )
             self.time.setText("")
+
+    def open_leetcode(self):
+        QDesktopServices.openUrl(
+            QUrl("https://leetcode.com/problemset/")
+        )
