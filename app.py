@@ -14,5 +14,6 @@ app = QApplication(sys.argv)
 widget = LeetCodeWidget(username)
 
 widget.show()
+widget.make_desktop_widget()
 
 sys.exit(app.exec())

@@ -1,0 +1,1 @@
+../../../../Resources/ pync/vendor/terminal-notifier-2.0.0/README.markdown
