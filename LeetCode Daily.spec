@@ -5,7 +5,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('venv/lib/python3.14/site-packages/pync/vendor', ' pync/vendor')],
+    datas=[('venv/lib/python3.14/site-packages/pync/vendor', 'pync/vendor'), ('leetcode_logo_transparent.png', '.')],
     hiddenimports=['pync', 'objc', 'AppKit'],
     hookspath=[],
     hooksconfig={},

@@ -1,1 +1,0 @@
-terminal-notifier__dot__app
